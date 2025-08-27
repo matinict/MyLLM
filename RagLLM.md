@@ -1,3 +1,7 @@
+Here is the updated README content with the URL you provided added under the **Vector Store** section.
+
+-----
+
 ### Rag LLM: Working with Docs/PDFs in Python
 
 This project demonstrates a basic **Retrieval-Augmented Generation (RAG)** pipeline using **LangChain** and a **local LLM (Ollama)**. The workflow processes local PDF documents, creates embeddings, stores them in a vector database, and uses them to answer questions.
@@ -63,7 +67,18 @@ for i, chunk in enumerate(chunks):
 
 The chunks are converted into numerical embeddings using a local Ollama model (`nomic-embed-text`) and stored in a persistent ChromaDB vector store. This allows for semantic search.
 
+For more information on LangChain's vector store integrations, you can refer to the official documentation: [https://python.langchain.com/docs/integrations/vectorstores/](https://python.langchain.com/docs/integrations/vectorstores/)
+
 ```python
+from langchain_chroma import Chroma
+
+vector_store = Chroma(
+    collection_name="example_collection",
+    embedding_function=embeddings,
+    persist_directory="./chroma_langchain_db",  # Where to save data locally, remove if not necessary
+)
+
+
 from langchain.embeddings import OllamaEmbeddings
 from langchain_community.vectorstores import Chroma
 
